@@ -14,6 +14,21 @@ spec:
     service: udaconnect-api
   type: NodePort
 ---
+apiVersion: v1
+kind: Service
+metadata:
+  name: uda-api
+  labels:
+    service: udaconnect-api
+spec:
+  selector:
+    service: udaconnect-api
+  type:  ClusterIP
+  ports:
+  - port: 80
+    targetPort: 5000
+    protocol: TCP
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -31,7 +46,7 @@ spec:
         service: udaconnect-api
     spec:
       containers:
-      - image: udacity/nd064-udaconnect-api:latest
+      - image: aold619/nd064-udaconnect-api:latest
         name: udaconnect-api
         imagePullPolicy: Always
         env:
