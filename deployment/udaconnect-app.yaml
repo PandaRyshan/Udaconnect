@@ -46,7 +46,7 @@ spec:
         service: udaconnect-app
     spec:
       containers:
-      - image: aold619/nd064-udaconnect-app:react18
+      - image: aold619/nd064-udaconnect-app:latest
         name: udaconnect-app
         ports:
         - containerPort: 3000
