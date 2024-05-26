@@ -4,12 +4,13 @@ metadata:
   labels:
     service: udaconnect-app
   name: udaconnect-app
+  namespace: udaconnect
 spec:
   ports:
   - name: "3000"
     port: 3000
     targetPort: 3000
-    nodePort: 30000
+    nodePort: 30010
   selector:
     service: udaconnect-app
   type: NodePort
@@ -20,7 +21,7 @@ metadata:
   labels:
     service: udaconnect-app
   name: uda-app
-  namespace: default
+  namespace: udaconnect
 spec:
   ports:
   - port: 80
@@ -35,6 +36,7 @@ metadata:
   labels:
     service: udaconnect-app
   name: udaconnect-app
+  namespace: udaconnect
 spec:
   replicas: 1
   selector:
@@ -46,7 +48,7 @@ spec:
         service: udaconnect-app
     spec:
       containers:
-      - image: aold619/nd064-udaconnect-app:latest
+      - image: aold619/udaconnect-app:latest
         name: udaconnect-app
         ports:
         - containerPort: 3000
